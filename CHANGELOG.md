@@ -3,6 +3,27 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [dev-interview] - 2025-04-24 (UNOFFICIAL/DEMO VERSION)
+
+> **NOTE:** This is an unofficial fork created for demonstration purposes only. 
+
+### Major changes: 
+
+- Replaced nanoseq.nf with nanoseq_interview.nf: a condensed version of the pipeline that only runs alignment using minimap2, transcript discovery & quantification using bambu and differential gene expression using DESeq2. 
+- added local subworkflow (differential_deseq2.nf) that only runs DESeq2 & not dexseq.
+- updated version of DESeq2
+
+### Parameters: 
+
+- Changed base.config settings so it will run on a personal computer (max memory 16 Gb and max cpu 8)
+
+### Software dependencies
+
+| Dependency            | Old version | New version |
+| --------------------  | ----------- | ----------- |
+| `bioconductor-DESeq2` | 1.28        | 1.46        |
+
+
 ## [3.1.0] - 2023-03-10
 
 ### Major enhancements

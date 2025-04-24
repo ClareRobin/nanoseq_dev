@@ -26,13 +26,13 @@ WorkflowMain.initialise(workflow, params, log)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { NANOSEQ } from './workflows/nanoseq'
+include { NANOSEQ_INTERVIEW } from './workflows/nanoseq_interview'
 
 //
 // WORKFLOW: Run main nf-core/nanoseq analysis pipeline
 //
 workflow NFCORE_NANOSEQ {
-    NANOSEQ ()
+    NANOSEQ_INTERVIEW ()
 }
 
 /*

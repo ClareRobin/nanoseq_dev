@@ -1,17 +1,34 @@
-# ![nf-core/nanoseq](docs/images/nf-core-nanoseq_logo_light.png#gh-light-mode-only) ![nf-core/nanoseq](docs/images/nf-core-nanoseq_logo_dark.png#gh-dark-mode-only)
 
-[![GitHub Actions CI Status](https://github.com/nf-core/nanoseq/workflows/nf-core%20CI/badge.svg)](https://github.com/nf-core/nanoseq/actions?query=workflow%3A%22nf-core+CI%22)
-[![GitHub Actions Linting Status](https://github.com/nf-core/nanoseq/workflows/nf-core%20linting/badge.svg)](https://github.com/nf-core/nanoseq/actions?query=workflow%3A%22nf-core+linting%22)
-[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?logo=Amazon%20AWS)](https://nf-co.re/nanoseq/results)
-[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.3697959-1073c8)](https://doi.org/10.5281/zenodo.3697959)
 
-[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A522.10.1-23aa62.svg)](https://www.nextflow.io/)
-[![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
-[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
-[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
-[![Launch on Nextflow Tower](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Nextflow%20Tower-%234256e7)](https://tower.nf/launch?pipeline=https://github.com/nf-core/nanoseq)
+## For Demonstration Purposes only
 
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23nanoseq-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/nanoseq)[![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?labelColor=000000&logo=twitter)](https://twitter.com/nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
+This forked version of nanoseq is for demonstration purposes only. It contains a pared-down version of the main workflow (nanoseq.nf) called nanoseq_interview.nf, that only does: 
+   - alignment of long read RNA-Seq data using minimap2 
+   - transcript discovery & gene expression estimation using bambu
+   - differential gene expression using DEseq2. 
+
+The pipeline was run on downsampled data from the SG-NEx (Singapore Nanopore Expression) project found at http://sg-nex-data.s3-website-ap-southeast-1.amazonaws.com/#data/data_tutorial/fastq/, using downsampled reference Hg38 genome. 
+
+The pipeline was run with a samplesheet formatted as follows: 
+```
+group,replicate,barcode,input_file,fasta,gtf
+A549_directRNA,1,,data/A549_directRNA_sample1.fastq.gz,data/hg38_chr22.fa,data/hg38_chr22.gtf
+A549_directRNA,2,,data/A549_directRNA_sample2.fastq.gz,data/hg38_chr22.fa,data/hg38_chr22.gtf
+A549_directRNA,3,,data/A549_directRNA_sample3.fastq.gz,data/hg38_chr22.fa,data/hg38_chr22.gtf
+HepG2_directRNA,1,,data/HepG2_directRNA_sample1.fastq.gz,data/hg38_chr22.fa,data/hg38_chr22.gtf
+HepG2_directRNA,2,,data/HepG2_directRNA_sample2.fastq.gz,data/hg38_chr22.fa,data/hg38_chr22.gtf
+HepG2_directRNA,3,,data/HepG2_directRNA_sample3.fastq.gz,data/hg38_chr22.fa,data/hg38_chr22.gtf
+```
+
+And using the following command (using docker): 
+```
+nextflow run main.nf --input data/samplesheet.csv -profile docker --protocol directRNA
+```
+
+Changes and deviations from nanoseq are documented in the changelog, bambu gene and transcript count and deseq2 results are uploaded for reference. 
+
+
+## Begin Nanoseq READMe
 
 ## Introduction
 
